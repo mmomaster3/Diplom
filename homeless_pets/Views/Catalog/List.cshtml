@@ -1,0 +1,90 @@
+﻿@model IEnumerable<homeless_pets.Models.Pet>
+
+@{
+    ViewBag.Title = "Каталог";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Каталог</h2>*@
+
+<div class="text">
+    <h2>Найдите своего лучшего друга!</h2>
+    <h3>Более 200 животных ищут свой дом.</h3>
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Все</a></li>
+            <li><a href="#tab2" data-toggle="tab">Коты</a></li>
+            <li><a href="#tab3" data-toggle="tab">Собаки</a></li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            @foreach (var item in Model)
+            {
+                string[] imgs = item.Img.Split(';');
+                <div class="col-sm-3 col-xs-4">
+                    @Html.Raw("<a href=\"" + Url.Action("Card", "Catalog") + "/" + item.PetID + "\"><img style='width:120px; height:120px;' src=\"" + imgs.First() + "\" /> </a>")
+                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Age) , @Html.DisplayFor(modelItem => item.Type)</p>
+                </div>
+            }
+        </div>
+        <div class="tab-pane" id="tab2">
+            @foreach (var item in Model)
+            {
+                string[] imgs = item.Img.Split(';');
+                if (item.Type == "Кот" || item.Type == "Кошка")
+                {
+                    <div class="col-sm-3 col-xs-4">
+                        @Html.Raw("<img style='width:120px; height:120px;' src=\"" + imgs.First() + "\" />")
+                        @Html.DisplayFor(modelItem => item.Name)
+                        @Html.DisplayFor(modelItem => item.Age)
+
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </div>
+                }
+            }
+        </div>
+        <div class="tab-pane" id="tab3">
+            <p>Привет, я в Разделе 3.</p>
+        </div>
+
+    </div>
+
+</div>
+
+@*<table class="table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>@Html.DisplayNameFor(model => model.Img)</th>
+        </tr>
+
+         <tr>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+
+                </td>
+            </tr>
+
+    </table>*@
