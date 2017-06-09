@@ -1,0 +1,23 @@
+﻿@model homeless_pets.Models.New
+
+@{
+    ViewBag.Title = "NewPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="container">
+    <section class="default news">
+        <div class="row">
+            <div class="col-sm-9 news-item img-viewer">
+                <h3>@Model.Header</h3>
+                <p class="info">
+                    <a href="#">Новости</a>, @Model.Date
+                </p>
+                <br />
+                <div>
+                    <p>@Model.Body</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

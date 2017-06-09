@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using homeless_pets.Models;
 
 namespace homeless_pets.Controllers
 {
@@ -10,20 +11,25 @@ namespace homeless_pets.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            NewsContext newsConx = new NewsContext();
+
+            var pets = from m in newsConx.News
+                       select m;
+
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    pets = pets.Where(s => s.Name.Contains(searchString));
+            //}
+            return View(pets);
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

@@ -14,21 +14,38 @@ namespace homeless_pets
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+            name: "EditPet",
+            url: "Manage/Edit/{id}",
+            defaults: new { controller = "Manage", action = "Edit", id = 1 }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
                 defaults: new { controller = "Home", action = "Index" }
             );
 
+
+
             routes.MapRoute(
                 name: "CardMap",
-                url: "{controller}/{action}/{id}",
+                url: "Catalog/{action}/{id}",
                 defaults: new { controller = "Catalog", action = "Card", id = UrlParameter.Optional }
             );
 
+            //routes.MapRoute(
+            //name: "EditPetIdNull",
+            //url: "Manage/Edit",
+            //defaults: new { controller = "Manage", action = "Info" }
+            //);
+
+
+
             routes.MapRoute(
-            name: "EditPet",
-            url: "{controller}/{action}/{id}",
-            defaults: new { controller = "Manage", action = "Edit", id = UrlParameter.Optional }
+            name: "Manage",
+            url: "Manage/Delete/{id}",
+            defaults: new { controller = "Manage", action = "Delete", id = UrlParameter.Optional },
+            constraints: new { id = @"\d+" }
             );
         }
     }

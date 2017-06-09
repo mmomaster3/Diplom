@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Info</h2>
+<h2>Список животных</h2>
 
 
 <div class="panel panel-default">
@@ -24,12 +24,14 @@
             {
                 <tr>
                     <td class="text-right">@item.PetID</td>
-                    <td>@Html.Raw("<a href=\"" + Url.Action("Edit", "Manage") + "/" + item.PetID + "\">dasdas</a>")</td>
+                    <td>@Html.Raw("<a href=\"" + Url.Action("Edit", "Manage") + "/" + item.PetID + "\">" + item.Name + "</a>")</td>
                     <td class="text-right">@item.Type</td>
                     <td class="text-center">
-                        @using (Html.BeginForm("Delete", "Admin"))
+                      @*  @Html.Raw("<a class = \"btn btn - default btn- xs\" href=\"" + Url.Action("Delete", "Manage") + "/" + item.PetID + "\">Удалить</a>")*@
+                        @*@Html.ActionLink("Удалить", "Delete", "Manage", new { id = item.PetID }, new { @class = "btn btn-default btn-xs" })*@
+                        @using (Html.BeginForm("Delete", "Manage"))
                         {
-                            @Html.Hidden("PetID", item.PetID)
+                            @Html.Hidden("id", item.PetID)
                             <input type="submit"
                                    class="btn btn-default btn-xs"
                                    value="Удалить" />

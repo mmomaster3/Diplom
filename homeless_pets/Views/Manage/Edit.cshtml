@@ -8,39 +8,42 @@
 
 <div class="panel">
     <div class="panel-heading">
-        <h3>Редактирование &laquo;@Model.Name&raquo;</h3>
+        @if (Model.Name == null)
+        {
+            <h3>Добавление нового животного</h3>
+        }
+        else
+        {
+            <h3>Редактирование &laquo;@Model.Name&raquo;</h3>
+        }
     </div>
 
-    @using (Html.BeginForm("Edit", "Admin",
-                FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Edit", "Manage",
+                                                                FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="panel-body">
             @Html.HiddenFor(m => m.PetID)
+            @Html.HiddenFor(m => m.Img)
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
                 switch (property.PropertyName)
                 {
                     case "PetID":
-                    case "ImageData":
-                    case "ImageMimeType":
+                    case "Img":
                         // Ничего не делать
                         break;
                     default:
                         <div class="form-group">
                             <label>@(property.DisplayName ?? property.PropertyName)</label>
-                            @if (property.PropertyName == "Description")
+                            @if (property.PropertyName == "CheckedOut")
                             {
+
                                 @Html.TextArea(property.PropertyName, null,
                                     new { @class = "form-control", rows = 5 })
                             }
-                            else if (property.PropertyName == "Price")
+                            else if (property.PropertyName == "Сastrated" || property.PropertyName == "Gender" || property.PropertyName == "WC")
                             {
-                                @Html.TextBox(property.PropertyName, null,
-                                    new
-                                    {
-                                        @class = "form-control",
-                                        Value = String.Format("{0:0.##}", Model.Age)
-                                    })
+                                @Html.CheckBox(name: property.PropertyName, htmlAttributes: new { @class = "form-control" })
                             }
                             else
                             {
@@ -57,29 +60,36 @@
                     <label>Картинка</label>
                     <a class='btn' href='javascript:;'>
                         Выберите файл...
-                        <input type="file" name="Image" size="40"
+                        <input type="file" min="1" max="15" multiple name="Images" id="ImagesID" size="40"
                                style="position:absolute;z-index:2;top:0;
                                 left:0;filter: alpha(opacity=0); opacity:0;
                                 background-color:transparent;color:transparent;"
-                               onchange='$("#upload-file-info").html($(this).val());'>
+                               onchange='$("#upload-file-info").html("Загружено нажмите  \"Сохранить\"");'>
                     </a>
                     <span class='label label-info' id="upload-file-info"></span>
                 </div>
-                @if (true)
+                @if (Model.Img == null || !Model.Img.Any())
                 {
                     <div class="form-control-static">Нет картинки</div>
                 }
                 else
                 {
-                    <img class="img-thumbnail" width="150" height="150"
-                         src="@Url.Action("GetImage", "Game",
-                        new { Model.PetID })" />
+                    string[] imgs = Model.Img.Split(';');
+                    <nav class="img-viewer">
+                        @foreach (var img in imgs)
+                        {
+                            if (img == "") { continue; }
+                            <img src="@img" class="album_imgs" alt="" title="" onclick="$(this).detach()">
+                        }
+                    </nav>
+
                 }
             </div>
         </div>
         <div class="panel-footer">
-            <input type="submit" value="Сохранить" class="btn btn-primary" />
-            @Html.ActionLink("Отменить изменения и вернуться к списку", "Index", null, new
+            <input type="submit" value="Сохранить" class="btn btn-primary" onclick="var s = '';$('.album_imgs').each(function () {s = s + $(this).attr('src') + ';'; });
+    $('#Img').val(s);" />
+            @Html.ActionLink("Отменить изменения и вернуться к списку", "Info", null, new
        {
            @class = "btn btn-default"
        })

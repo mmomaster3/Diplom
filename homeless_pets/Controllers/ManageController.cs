@@ -32,9 +32,9 @@ namespace homeless_pets.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -114,44 +114,52 @@ namespace homeless_pets.Controllers
 
         public ViewResult Edit(int? id)
         {
+            if (id == null)
+            {
+                return View("Info");
+            }
             PetsContext pets = new PetsContext();
             //PetsContext pet = PetsContext;
             //pets.Pets.FirstOrDefault(id)
             return View(pets.Pets.FirstOrDefault(p => p.PetID == id));
         }
 
-        //[HttpPost]
-        //public ActionResult Edit(Pet pet)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        repository.SaveGame(game);
-        //        TempData["message"] = string.Format("Изменения в игре \"{0}\" были сохранены", game.Name);
-        //        return RedirectToAction("Index");
-        //    }
-        //    else
-        //    {
-        //        // Что-то не так со значениями данных
-        //        return View(game);
-        //    }
-        //}
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Edit(Pet pet, HttpPostedFileBase [] images = null)
+        {
 
-        //public ViewResult Create()
-        //{
-        //    return View("Edit", new Game());
-        //}
+            BDactions BDaction = new BDactions();
+            if (ModelState.IsValid)
+            {
+                BDaction.SavePet(pet, images);
+                TempData["message"] = string.Format("Изменения \"{0}\" были сохранены", pet.Name);
+                return RedirectToAction("Info");
+            }
+            else
+            {
+                // Что-то не так со значениями данных
+                return View(pet);
+            }
+        }
 
-        //[HttpPost]
-        //public ActionResult Delete(int gameId)
-        //{
-        //    Game deletedGame = repository.DeleteGame(gameId);
-        //    if (deletedGame != null)
-        //    {
-        //        TempData["message"] = string.Format("Игра \"{0}\" была удалена",
-        //            deletedGame.Name);
-        //    }
-        //    return RedirectToAction("Index");
-        //}
+        public ViewResult Create()
+        {
+            return View("Edit", new Pet());
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            BDactions BDaction = new BDactions();
+            Pet deletedPet = BDaction.DeletePet(id);
+            if (deletedPet != null)
+            {
+                TempData["message"] = string.Format(" \"{0}\" была удалена",
+                    deletedPet.Name);
+            }
+            return RedirectToAction("Info");
+        }
 
         //
         // POST: /Manage/AddPhoneNumber
@@ -380,7 +388,7 @@ namespace homeless_pets.Controllers
             base.Dispose(disposing);
         }
 
-#region Вспомогательные приложения
+        #region Вспомогательные приложения
         // Используется для защиты от XSRF-атак при добавлении внешних имен входа
         private const string XsrfKey = "XsrfId";
 
@@ -431,6 +439,6 @@ namespace homeless_pets.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

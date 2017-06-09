@@ -125,8 +125,13 @@ footer > p {
 }
 
 .img-viewer > a > img {
-    width: 160px;
     height: 90px;
+    padding: 10px 10px 10px 10px;
+}
+
+.img-viewer  > img {
+    height: 90px;
+    padding: 10px 10px 10px 10px;
 }
 
 .thumbnail {

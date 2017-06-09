@@ -5,22 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Card</h2>
-@ViewBag.Variable
-
 <main class="container">
     @foreach (var item in Model)
     {
         if (item.PetID == ViewBag.Variable)
         {
-            string[] imgs = item.Img.Split(';');
+            string[] imgs;
+            try
+            {
+                imgs = item.Img.Split(';');
+            }
+            catch (Exception)
+            {
+                imgs = new string[] { @"/Images/Untitled.jpg" };
+            }
 
             <section id="card">
-                <img class="thumbnail" src="@Html.Raw(imgs.First())" alt="" title="">
+                @*<img class="thumbnail" src="@Html.Raw(imgs.First())" alt="" title="">*@
                 <h1>
                     <a href="">@Html.DisplayFor(modleItem => item.Name)</a>
                 </h1>
-                <h2></h2>
                 <p>
                     Контакты:     <a href="">@Html.DisplayFor(modleItem => item.tel)</a>
                     <br>
@@ -38,7 +42,8 @@
                         </a>
                     }
 
-                </nav><div class="prev fa fa-angle-left" style="display: none;"></div><div class="next fa fa-angle-right" style="display: none;"></div>
+                </nav>
+                <div class="prev fa fa-angle-left" style="display: none;"></div><div class="next fa fa-angle-right" style="display: none;"></div>
             </section>
 
             <section id="info">
@@ -128,117 +133,3 @@
         }
     }
 </main>
-
-
-@*<table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.tel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Сastrated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConditionsAccept)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Wool)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Character)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Food)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WC)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheckedOut)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Img)
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model)
-    {
-        if (item.PetID == ViewBag.Variable)
-        {
-            string[] imgs = item.Img.Split(';');
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.tel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Сastrated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.Raw("<img style='width:120px; height:120px;' src=\"" + imgs.First() + "\" />")
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConditionsAccept)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Wool)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Colour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Character)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Food)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WC)
-            </td>
-            <td>
-                @Html.Raw(item.CheckedOut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-
-                @foreach (var img in imgs)
-                {
-                    @Html.Raw("<img style='width:120px; height:120px;' src=\"" + img + "\" />")
-                }
-
-            </td>
-        </tr>
-        }
-    }
-
-    </table>*@

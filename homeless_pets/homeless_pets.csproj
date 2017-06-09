@@ -199,12 +199,17 @@
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBforNewsRedactor.cs" />
+    <Compile Include="Models\New.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BDactions.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NewsContext.cs" />
     <Compile Include="Models\Pet.cs" />
     <Compile Include="Models\PetsContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -246,6 +251,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -300,6 +306,10 @@
     <Content Include="Views\Catalog\Card.cshtml" />
     <Content Include="Views\Manage\Info.cshtml" />
     <Content Include="Views\Manage\Edit.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\NewPage.cshtml" />
+    <Content Include="Views\News\EditNews.cshtml" />
+    <Content Include="Views\News\NewsRedactor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
