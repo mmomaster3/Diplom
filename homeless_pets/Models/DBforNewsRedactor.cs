@@ -13,7 +13,7 @@ namespace homeless_pets.Models
         {
             context = new NewsContext();
         }
-
+        //сохранение новостей
         public void SaveNew(New newVariable)
         {
 
@@ -35,7 +35,7 @@ namespace homeless_pets.Models
             context.SaveChanges();
         }
 
-
+        //удаление новостей
         public New DeleteNew(int id)
         {
             New dbEntry = context.News.Find(id);

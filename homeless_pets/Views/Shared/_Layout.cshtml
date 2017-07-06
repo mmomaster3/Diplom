@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("_______________", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -57,11 +57,12 @@
         <p>
             Свидетельство о регистрации № 05\1111 выданые Главным управлением юстиций Мингорисполкома от 15 апреля 2017 года. <br>УНП 22222222, Республика Беларусь, г. Минск, ул. Будславская 21А, пом. 32К
         </p>
-        <p class="allright">@DateTime.Now.Year . &copy; Благотворительное общественное объединение помощи бездомным животным "ЗООшанс". Все права защищены.<br>Полное или частичное копирование информации с сайта только с письменного разрешения администрации. </p>
+        <p class="allright">@DateTime.Now.Year . &copy; Благотворительное общественное объединение помощи бездомным животным. Все права защищены.</p>
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

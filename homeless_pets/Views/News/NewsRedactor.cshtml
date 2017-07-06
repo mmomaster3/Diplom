@@ -20,7 +20,9 @@
             {
                 <tr>
                     <td class="text-right">@item.NewID</td>
-                    <td>@Html.ActionLink(item.Header, "EditNews", new { id = item.NewID }) @*@Html.Raw("<a href=\"" + Url.Action("EditNews", "News") + "/" + item.NewID + "\">" + item.Header + "</a>")*@</td>
+                    @*@Html.ActionLink(item.Header, "EditNews", new { id = item.NewID })*@
+                    @*@Html.Raw("<a href=\"" + Url.Action("EditNews", new { id = item.NewID }) + "\">" + item.Header + "</a>")*@
+                    <td>@Html.ActionLink(item.Header, "EditNews", "News", new {  id = item.NewID }, null)</td>
                     @*<td class="text-right">@item.Type</td>*@
                     <td class="text-center">
                         @*  @Html.Raw("<a class = \"btn btn - default btn- xs\" href=\"" + Url.Action("Delete", "Manage") + "/" + item.PetID + "\">Удалить</a>")*@

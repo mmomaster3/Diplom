@@ -25,7 +25,7 @@ namespace homeless_pets.Controllers
             return View(pets.Pets);
         }
 
-        public ActionResult List(string searchString, bool? gender, string all)
+        public ActionResult List(string searchString, string all, string MoveGender = null)
         {
             PetsContext petsConx = new PetsContext();
             var pets = from m in petsConx.Pets
@@ -36,13 +36,19 @@ namespace homeless_pets.Controllers
                 pets = pets.Where(s => s.Name.Contains(searchString));
             }
 
-            ViewBag.SelectedGender = gender;
+            //ViewBag.SelectedGender = gender;
 
-            if (gender != null)
+            if (MoveGender != null && MoveGender != "Выбрать пол")
             {
-                pets = pets.Where(s => s.Gender == gender);
+                pets = pets.Where(s => s.Gender == (MoveGender == "Женский" ? true: false));
 
             }
+
+            List<SelectListItem> genderItems = new List<SelectListItem>();
+            genderItems.Add(new SelectListItem() { Text = "Выбрать пол", Selected = (MoveGender) == null ? true : false });
+            genderItems.Add(new SelectListItem() { Text = "Мужской", Value = "Мужской", Selected = (MoveGender) == "Мужской" ? true : false });
+            genderItems.Add(new SelectListItem() { Text = "Женский", Value = "Женский", Selected = (MoveGender) == "Женский" ? true : false });
+            ViewBag.MoveGender = genderItems;
 
             return View(pets);
         }

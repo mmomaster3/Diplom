@@ -5,17 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EditNews</h2>
-
 <div class="panel">
     <div class="panel-heading">
         @if (Model.Header == null)
         {
-            <h3>Добавление нового новости</h3>
+            <h2>Добавление новой новости</h2>
         }
         else
         {
-            <h3>Редактирование новости</h3>
+            <h2>Редактирование новости</h2>
         }
     </div>
 
@@ -33,7 +31,6 @@
                     default:
                         <div class="form-group">
                             <label>@(property.DisplayName ?? property.PropertyName)</label>
-
                             @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
                             @Html.ValidationMessage(property.PropertyName)
                         </div>
@@ -44,9 +41,10 @@
         <div class="panel-footer">
             <input type="submit" value="Сохранить" class="btn btn-primary" />
             @Html.ActionLink("Отменить изменения и вернуться к списку", "NewsRedactor", null, new
-            {
-                @class = "btn btn-default"
-            })
+       {
+           @class = "btn btn-default"
+       })
         </div>
     }
+    <script>$('#Date').datepicker()</script>
 </div>

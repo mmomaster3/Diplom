@@ -16,10 +16,6 @@ namespace homeless_pets.Controllers
             var pets = from m in newsConx.News
                        select m;
 
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    pets = pets.Where(s => s.Name.Contains(searchString));
-            //}
             return View(pets);
         }
 

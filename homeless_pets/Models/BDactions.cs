@@ -14,17 +14,10 @@ namespace homeless_pets.Models
         {
             context = new PetsContext();
         }
-
+        //сохраниение животных
         public void SavePet(Pet pet, HttpPostedFileBase[] images)
         {
             string pathsToImgs = "";
-
-            //var s = Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~") + @"Images/" + pet.Name);
-            //if (Directory.Exists(s.FullName))
-            //{
-            //    var ran = r.Next(1, 100);
-            //    //images.SaveAs();
-            //}
             if (images != null && images.All(el => el != null))
             {
                 foreach (var img in images)
@@ -39,14 +32,7 @@ namespace homeless_pets.Models
 
             if (pet.PetID == 0)
             {
-                //if (pet.Type == "Кошка" || pet.Type == "Кот")
-                //{
-                //    var s = Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~") + @"Images/Cats" + pet.Name);
-                //}
-                //else
-                //{
-                //    var s = Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~") + @"Images/Dogs" + pet.Name);
-                //}
+
                 if (images != null && images.All(el => el != null))
                 {
                     pet.Img = pathsToImgs;
@@ -58,13 +44,6 @@ namespace homeless_pets.Models
             {
 
 
-                //string[] imgsRoot = pet.Img.Split(';');
-                //var root = Directory.GetDirectoryRoot(imgsRoot[0]);
-
-                //for (int i = 0; i < images.Count(); i++)
-                //{
-                //    images[i].SaveAs(root + "//" + RandomString(10));
-                //}
 
                 Pet petInBD = context.Pets.Find(pet.PetID);
                 if (petInBD != null)
@@ -92,7 +71,7 @@ namespace homeless_pets.Models
             context.SaveChanges();
         }
 
-
+        //удаление животных
         public Pet DeletePet(int id)
         {
             Pet dbEntry = context.Pets.Find(id);

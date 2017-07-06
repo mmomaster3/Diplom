@@ -21,14 +21,9 @@
             </div>
             <div class="col-md-2">
                 <form asp-controller="Catalog" asp-action="List">
-                    <select id="ddl" name="gender" onchange="this.form.submit()" class="btn btn-primary dropdown-toggle">
-                        <option selected value="null">Выбрать пол</option>
-                        <option value="true">Женский</option>
-                        <option value="false">Мужской</option>
-                    </select>
+                    @Html.DropDownList("MoveGender", null, new { onchange = "this.form.submit()",  @class = "btn btn-primary dropdown-toggle" })
                 </form>
             </div>
-
             <div>
                 <form asp-controller="Catalog" asp-action="List">
                     <p class="col-xs-12 col-md-2">

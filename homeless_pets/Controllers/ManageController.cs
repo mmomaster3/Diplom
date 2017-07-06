@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.Collections.Generic;
 using homeless_pets.Models;
 
 namespace homeless_pets.Controllers
@@ -114,6 +115,12 @@ namespace homeless_pets.Controllers
 
         public ViewResult Edit(int? id)
         {
+            //List<SelectListItem> typeItems = new List<SelectListItem>();
+            //typeItems.Add(new SelectListItem() { Text = "Кот", Value = "Кот" });
+            //typeItems.Add(new SelectListItem() { Text = "Кошка", Value = "Кошка" });
+            //typeItems.Add(new SelectListItem() { Text = "Кабель", Value = "Кабель" });
+            //typeItems.Add(new SelectListItem() { Text = "Сука", Value = "Сука" });
+            //ViewBag.typeItems = typeItems;
             if (id == null)
             {
                 return View("Info");

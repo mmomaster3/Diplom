@@ -7,6 +7,7 @@ using homeless_pets.Models;
 
 namespace homeless_pets.Controllers
 {
+    [Authorize]
     public class NewsController : Controller
     {
         // GET: News
@@ -15,6 +16,7 @@ namespace homeless_pets.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ViewResult NewPage(int? id)
         {
             if (id == null)
@@ -23,6 +25,18 @@ namespace homeless_pets.Controllers
             }
 
             NewsContext news = new NewsContext();
+            return View(news.News.FirstOrDefault(n => n.NewID == id));
+        }
+        //редактировать новости
+        public ViewResult EditNews(int? id)
+        {
+            if (id == null)
+            {
+                return View("EditNews");
+            }
+            NewsContext news = new NewsContext();
+            //PetsContext pet = PetsContext;
+            //pets.Pets.FirstOrDefault(id)
             return View(news.News.FirstOrDefault(n => n.NewID == id));
         }
 
@@ -34,7 +48,7 @@ namespace homeless_pets.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult EditNews(New newVariable)
+        public ActionResult EditNews(New newVariable, int? id)
         {
             DBforNewsRedactor BDaction = new DBforNewsRedactor();
             if (ModelState.IsValid)
@@ -49,7 +63,7 @@ namespace homeless_pets.Controllers
                 return View(newVariable);
             }
         }
-
+        //создать новости
         public ViewResult Create()
         {
             return View("EditNews", new New());

@@ -47,6 +47,14 @@ namespace homeless_pets
             defaults: new { controller = "Manage", action = "Delete", id = UrlParameter.Optional },
             constraints: new { id = @"\d+" }
             );
+
+
+            routes.MapRoute(
+            name: "News",
+            url: "News/EditNews/{id}",
+            defaults: new { controller = "News", action = "EditNews", id = UrlParameter.Optional },
+            constraints: new { id = @"\d+" }
+            );
         }
     }
 }

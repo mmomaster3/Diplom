@@ -27,7 +27,7 @@ select,
 textarea {
     max-width: 280px;
 }
-
+/* стили для карусели */
 .item {
     background: #382e39;
     background: linear-gradient(to bottom, #453b45, #382e39);
@@ -61,7 +61,7 @@ textarea {
     background-size: 15px 30px;
     z-index: 30;
 }
-
+/* подвал */
 footer {
     background: linear-gradient(to bottom, #e6e6e6, #e6e6e6);
 }
@@ -87,12 +87,12 @@ footer > h4 {
 footer > p {
     font-size: 14px;
 }
-
+/*навигация*/
 .navbar-brand {
     background: url(../Images/logo.png);
     background-size: 100%;
     display: block;
-    text-indent: -9999px;
+    /*text-indent: -9999px;*/
 }
 
 .navbar-nav {
@@ -123,7 +123,7 @@ footer > p {
 .col-sm-3 {
     padding-top: 20px;
 }
-
+/*альбом для 1 животного*/
 .img-viewer > a > img {
     height: 90px;
     padding: 10px 10px 10px 10px;
@@ -141,7 +141,7 @@ footer > p {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+/*для анкеты животного*/
 .options {
     font-size: 10pt;
     margin: 1em 0;
@@ -184,3 +184,55 @@ section#card .thumbnail {
     transition: box-shadow .4s ease;
 
 }
+/* валидатор */
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*спонсоры*/
+
+#thanks {
+    padding-top: 30px;
+    padding-bottom: 30px
+}
+
+#thanks h3 {
+    text-align:center;
+    max-width: none;
+    margin: 0;
+    font-size: 8pt;
+    font-style: italic;
+    color: #999999
+}
+
+#thanks nav {
+    padding: 0;
+    margin: 20px 0;
+    height: 50px;
+    overflow: hidden;
+    text-align: center
+}
+
+#thanks nav a img {
+    height: 100%;
+    margin: 0 5px
+}
+
