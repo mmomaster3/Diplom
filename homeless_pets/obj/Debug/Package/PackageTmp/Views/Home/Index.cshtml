@@ -1,0 +1,80 @@
+﻿@model IEnumerable<homeless_pets.Models.New>
+@{
+    ViewBag.Title = "Homeless pets";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"> </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    })</script>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="~/Images/promo1.png" alt="">
+            <div class="carousel-caption">
+                <h3>Маруся</h3>
+                <p>Кошка в дар для ценителей классики. Идеальный котенок для любителей фортепианной музыки. Окрас как у клавишей фоно, музыкальный голос...</p>
+                <p>@Html.ActionLink("Каталог \u00BB", "List", "Catalog", null, new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="~/Images/promo_2.png" alt="">
+            <div class="carousel-caption">
+                <h3>Максим</h3>
+                <p>Это не кот, а самое настоящее торнадо. Веселый и потешный дурашка. Он постоянно куда-то бежит, что-то хватает, кого-то ловит...</p>
+                <p>@Html.ActionLink("Каталог \u00BB", "List", "Catalog", null, new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="~/Images/promo_3.png" alt="">
+            <div class="carousel-caption">
+                <h3>Мирциария</h3>
+                <p>Утонченная, гибкая, настоящая ladycat ищет дом. Рожденная на улице, девочка жила в голоде и постоянном страхе...</p>
+                <p>@Html.ActionLink("Каталог \u00BB", "List", "Catalog", null, new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var topic in Model)
+    {
+        <div class="col-md-4">
+            <h2>@topic.Header</h2>
+            <p>
+                @topic.Short
+            </p>
+            <p>@Html.ActionLink("Читать", "NewPage", "News", new { id = topic.NewID }, new { @class = "btn btn-default" })</p>
+        </div>
+    }
+</div>
+
+<section id="thanks">
+    <h3>Спасибо ВСЕМ кто не остался равнодуным!</h3>
+    <nav>
+        <a href="http://interfax.by" target="_blank"><img src="~/Images/logos/interfax.png" alt="Интерфакс" title="Интерфакс"></a>
+        <a href="http://remesla.by" target="_blank"><img src="~/Images/logos/remesla.png" alt="Remesla.by" title="Remesla.by"></a>
+        <a href="http://hoster.by" target="_blank"><img src="~/Images/logos/hosterby.png" alt="hoster.by" title="hoster.by"></a>
+        <a href="http://zapomnim.by" target="_blank"><img src="~/Images/logos/zapomnim.png" alt="Свеча Памяти" title="Свеча Памяти"></a>
+        <a href="http://maesens.by" target="_blank"><img src="~/Images/logos/maesens.png" alt="МаеСэнс" title="МаеСэнс"></a>
+        <a href="http://str.by" target="_blank"><img src="~/Images/logos/str.png" alt="Streamline" title="Streamline"></a>
+        <a href="http://onliner.by" target="_blank"><img src="~/Images/logos/onliner.png" alt="Onliner" title="Onliner"></a>
+        <a href="http://husse.by" target="_blank"><img src="~/Images/logos/husse.png" alt="Husse" title="Husse"></a>
+        <a href="http://www.doctor-vet.by" target="_blank"><img src="~/Images/logos/dv.png" alt="Доктор Вет" title="Доктор Вет"></a>
+        <a href="http://lovelypets.by" target="_blank"><img src="~/Images/logos/lovelypets.png" alt="Lovely Pets" title="Lovely Pets"></a>
+        <a href="http://alfavet.by" target="_blank"><img src="~/Images/logos/alfavet.png" alt="Альфа-Вет" title="Альфа-Вет"></a>
+        <a href="http://ecovet.by" target="_blank"><img src="~/Images/logos/ecovet.png" alt="ЭкоВетКом" title="ЭкоВетКом"></a>
+        <a href="http://tb.by" target="_blank"><img src="~/Images/logos/tb.png" alt="Технобанк" title="Технобанк"></a>
+    </nav>
+</section>

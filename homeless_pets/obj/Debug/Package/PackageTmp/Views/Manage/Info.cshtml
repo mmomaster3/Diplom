@@ -1,0 +1,49 @@
+﻿
+@model IEnumerable<homeless_pets.Models.Pet>
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Список животных</h2>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Список животных</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-right">ID</th>
+                <th>Название</th>
+                <th class="text-right">Тип животного</th>
+                <th class="text-center">Действия</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-right">@item.PetID</td>
+                    <td>@Html.Raw("<a href=\"" + Url.Action("Edit", "Manage") + "/" + item.PetID + "\">" + item.Name + "</a>")</td>
+                    <td class="text-right">@item.Type</td>
+                    <td class="text-center">
+                      @*  @Html.Raw("<a class = \"btn btn - default btn- xs\" href=\"" + Url.Action("Delete", "Manage") + "/" + item.PetID + "\">Удалить</a>")*@
+                        @*@Html.ActionLink("Удалить", "Delete", "Manage", new { id = item.PetID }, new { @class = "btn btn-default btn-xs" })*@
+                        @using (Html.BeginForm("Delete", "Manage"))
+                        {
+                            @Html.Hidden("id", item.PetID)
+                            <input type="submit"
+                                   class="btn btn-default btn-xs"
+                                   value="Удалить" />
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Добавить животное", "Create", null,
+            new { @class = "btn btn-default" })
+    </div>
+</div>
+

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("_______________", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Каталог", "List", "Catalog")</li>
+                    <li>@Html.ActionLink("Чем нам помочь?", "About", "Home")</li>
+                    @*<li>@Html.ActionLink("Новости", "About", "Home")</li>*@
+                    <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <hr />
+    <footer>
+        <h4>Расчетный счет для пожертвований</h4>
+        <p>
+            3015 072 860 003 в ООО «Банк», г.Минск, РКЦ, код 111,
+            <br>получатель: ПБЖ «Бездомные животные», УНП 22222222, назначение платежа: пожертвование
+        </p>
+        <nav>
+            <div class="navbar-default">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Каталог", "List", "Catalog")</li>
+                    <li>@Html.ActionLink("Чем нам помочь?", "About", "Home")</li>
+                    @*<li>@Html.ActionLink("Новости", "About", "Home")</li>*@
+                    <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </nav>
+        <br />
+        <br />
+        <br />
+        <p>
+            Свидетельство о регистрации № 05\1111 выданые Главным управлением юстиций Мингорисполкома от 15 апреля 2017 года. <br>УНП 22222222, Республика Беларусь, г. Минск, ул. Будславская 21А, пом. 32К
+        </p>
+        <p class="allright">@DateTime.Now.Year . &copy; Благотворительное общественное объединение помощи бездомным животным "ЗООшанс". Все права защищены.<br>Полное или частичное копирование информации с сайта только с письменного разрешения администрации. </p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

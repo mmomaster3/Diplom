@@ -1,0 +1,52 @@
+﻿@model homeless_pets.Models.New
+
+@{
+    ViewBag.Title = "EditNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditNews</h2>
+
+<div class="panel">
+    <div class="panel-heading">
+        @if (Model.Header == null)
+        {
+            <h3>Добавление нового новости</h3>
+        }
+        else
+        {
+            <h3>Редактирование новости</h3>
+        }
+    </div>
+
+    @using (Html.BeginForm("EditNews", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.NewID)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                switch (property.PropertyName)
+                {
+                    case "NewID":
+                        // Ничего не делать
+                        break;
+                    default:
+                        <div class="form-group">
+                            <label>@(property.DisplayName ?? property.PropertyName)</label>
+                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                            @Html.ValidationMessage(property.PropertyName)
+                        </div>
+                        break;
+                }
+            }
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Сохранить" class="btn btn-primary" />
+            @Html.ActionLink("Отменить изменения и вернуться к списку", "NewsRedactor", null, new
+       {
+           @class = "btn btn-default"
+       })
+        </div>
+    }
+    <script>$('#Date').datepicker()</script>
+</div>

@@ -1,0 +1,238 @@
+﻿body {
+    padding-top: 50px;
+    /*padding-bottom: 20px;*/
+}
+
+.item > img {
+    min-height: 450px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-top: 53px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+/* стили для карусели */
+.item {
+    background: #382e39;
+    background: linear-gradient(to bottom, #453b45, #382e39);
+    margin-top: -1px;
+    color: #fff;
+    height: 400px;
+}
+
+.carousel-caption {
+    text-align: right;
+    right: 40px;
+    left: 500px;
+    position: absolute;
+    right: 5%;
+    left: 50%;
+}
+
+    .carousel-caption p {
+        color: #a3a0a4;
+    }
+
+.item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 9px;
+    background: linear-gradient(45deg, transparent 33.333%, #fff 33.333%, #fff 66.667%, transparent 66.667%),linear-gradient(-45deg, transparent 33.333%, #fff 33.333%, #fff 66.667%, transparent 66.667%);
+    background-size: 15px 30px;
+    z-index: 30;
+}
+/* подвал */
+footer {
+    background: linear-gradient(to bottom, #e6e6e6, #e6e6e6);
+}
+
+.allright {
+    color: grey;
+    font-size: 12px;
+}
+
+footer > p, h4, nav {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    max-width: 1170px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+footer > h4 {
+    padding-top: 15px;
+}
+
+footer > p {
+    font-size: 14px;
+}
+/*навигация*/
+.navbar-brand {
+    background: url(../Images/logo.png);
+    background-size: 100%;
+    display: block;
+    /*text-indent: -9999px;*/
+}
+
+.navbar-nav {
+    padding-left: 60px;
+}
+
+.text {
+    background: #382e39;
+    color: #fff;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.tab-content p {
+    color: grey;
+}
+
+.tab-content h3 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+/*.tab-content h3{
+    font-size: 11px;
+
+}*/
+
+.col-sm-3 {
+    padding-top: 20px;
+}
+/*альбом для 1 животного*/
+.img-viewer > a > img {
+    height: 90px;
+    padding: 10px 10px 10px 10px;
+}
+
+.img-viewer  > img {
+    height: 90px;
+    padding: 10px 10px 10px 10px;
+}
+
+.thumbnail {
+    margin-top: 20px;
+    width: 160px;
+    height: 160px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*для анкеты животного*/
+.options {
+    font-size: 10pt;
+    margin: 1em 0;
+    width: 100%
+}
+
+.options th,.options td {
+    padding: 5px 10px
+}
+
+.options .separator th,.options .separator td {
+    height: 1em;
+    border-top: 1px solid #eee;
+    background: #fff !important
+}
+
+.options th {
+    width: 25%;
+    vertical-align: top
+}
+
+.options tbody>tr:nth-child(odd) th,.options tbody>tr:nth-child(odd) td {
+    background: #fcfcfc
+}
+
+.options ul {
+    padding: 0 0 0 1.2em
+}
+
+section#card .thumbnail {
+    background: #999;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.25);
+    border: none;
+    margin: 0 0 15px;
+    -webkit-transition: box-shadow .4s ease;
+    -moz-transition: box-shadow .4s ease;
+    -o-transition: box-shadow .4s ease;
+    transition: box-shadow .4s ease;
+
+}
+/* валидатор */
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*спонсоры*/
+
+#thanks {
+    padding-top: 30px;
+    padding-bottom: 30px
+}
+
+#thanks h3 {
+    text-align:center;
+    max-width: none;
+    margin: 0;
+    font-size: 8pt;
+    font-style: italic;
+    color: #999999
+}
+
+#thanks nav {
+    padding: 0;
+    margin: 20px 0;
+    height: 50px;
+    overflow: hidden;
+    text-align: center
+}
+
+#thanks nav a img {
+    height: 100%;
+    margin: 0 5px
+}
+

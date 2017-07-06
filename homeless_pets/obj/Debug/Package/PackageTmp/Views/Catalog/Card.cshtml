@@ -1,0 +1,135 @@
+﻿@model IEnumerable<homeless_pets.Models.Pet>
+
+@{
+    ViewBag.Title = "Card";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="container">
+    @foreach (var item in Model)
+    {
+        if (item.PetID == ViewBag.Variable)
+        {
+            string[] imgs;
+            try
+            {
+                imgs = item.Img.Split(';');
+            }
+            catch (Exception)
+            {
+                imgs = new string[] { @"/Images/Untitled.jpg" };
+            }
+
+            <section id="card">
+                @*<img class="thumbnail" src="@Html.Raw(imgs.First())" alt="" title="">*@
+                <h1>
+                    <a href="">@Html.DisplayFor(modleItem => item.Name)</a>
+                </h1>
+                <p>
+                    Контакты:     <a href="">@Html.DisplayFor(modleItem => item.tel)</a>
+                    <br>
+                    Условия пристройства:
+                    <span>@Html.DisplayFor(modleItem => item.ConditionsAccept)</span>
+                </p>
+            </section>
+
+            <section id="photos" class="scrollable">
+                <nav class="img-viewer">
+                    @foreach (var img in imgs)
+                    {
+                        <a href="@img" target="_blank">
+                            <img src="@img" alt="" title="">
+                        </a>
+                    }
+
+                </nav>
+                <div class="prev fa fa-angle-left" style="display: none;"></div><div class="next fa fa-angle-right" style="display: none;"></div>
+            </section>
+
+            <section id="info">
+
+                <table class="options">
+                    <tbody>
+                        <tr>
+                            <th>Пол</th>
+                            <td>
+                                @if (item.Gender)
+                                {
+                                    <p>Женский</p>
+                                }
+                                else
+                                {
+                                    <p>Мужской</p>
+                                }
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Возраст</th>
+                            <td>
+                                @Html.DisplayFor(modleItem => item.Age)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Кастрирован/Стерилизована</th>
+                            <td>
+                                @if (item.Сastrated)
+                                {
+                                    <p>Да</p>
+                                }
+                                else
+                                {
+                                    <p>Нет</p>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="options">
+                    <tbody>
+                        <tr class="separator"><td colspan="2"></td></tr>
+                        <tr>
+                            <th>Тип шерсти</th>
+                            <td>
+                                @Html.DisplayFor(modleItem => item.Wool)
+                                @*<a href="/catalog/cats?wool=1"></a>*@
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Преимущественный окрас</th>
+                            <td>
+                                @Html.DisplayFor(modleItem => item.Colour)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="options">
+                    <tbody>
+                        <tr class="separator"><td colspan="2"></td></tr>
+                        <tr><th>Характер</th><td><p>@Html.DisplayFor(modleItem => item.Character)</p></td></tr>
+                        <tr><th>Кормление</th><td><p>@Html.DisplayFor(modleItem => item.Food)</p></td></tr>
+                        <tr>
+                            <th>Приучен к лотку</th>
+                            <td>
+                                @if (item.WC)
+                                {
+                                    <p>Да</p>
+                                }
+                                else
+                                {
+                                    <p>Нет</p>
+                                }
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="options"><tbody><tr class="separator"><td colspan="2"></td></tr><tr><th>Обработка и уход</th><td>@Html.Raw(item.CheckedOut)</td></tr></tbody></table>
+
+                <table class="options"><tbody><tr class="separator"><td colspan="2"></td></tr><tr><th>Адрес</th><td>@Html.DisplayFor(modleItem => item.Address)</td></tr></tbody></table>
+            </section>
+        }
+    }
+</main>

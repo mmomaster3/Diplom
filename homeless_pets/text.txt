@@ -1,0 +1,335 @@
+|   *.config
+|   *.cd
+|   *.ico
+|   *.asax
+|   *.asax.cs
+|   *.csproj
+|   *.csproj.user
+|   *.config
+|   *.html
+|   *.cs
+|   *.config
+|   *.Debug.config
+|   *.Release.config
+|   
++---App_Data
+|       *.mdf
+|       *.ldf
+|       
++---App_Start
+|       *.cs
+|       *.cs
+|       *.cs
+|       *.cs
+|       *.Auth.cs
+|       
++---bin
+|   |   *.Runtime.dll
+|   |   *.Runtime.pdb
+|   |   *.config
+|   |   *.dll
+|   |   *.SqlServer.dll
+|   |   *.SqlServer.xml
+|   |   *.xml
+|   |   *.dll
+|   |   *.dll.config
+|   |   *.pdb
+|   |   *.AI.Agent.Intercept.dll
+|   |   *.AI.DependencyCollector.dll
+|   |   *.AI.DependencyCollector.xml
+|   |   *.AI.PerfCounterCollector.dll
+|   |   *.AI.ServerTelemetryChannel.dll
+|   |   *.AI.ServerTelemetryChannel.xml
+|   |   *.AI.Web.dll
+|   |   *.AI.Web.xml
+|   |   *.AI.WindowsServer.dll
+|   |   *.AI.WindowsServer.xml
+|   |   *.ApplicationInsights.dll
+|   |   *.ApplicationInsights.xml
+|   |   *.AspNet.Identity.Core.dll
+|   |   *.AspNet.Identity.Core.xml
+|   |   *.AspNet.Identity.EntityFramework.dll
+|   |   *.AspNet.Identity.EntityFramework.xml
+|   |   *.AspNet.Identity.Owin.dll
+|   |   *.AspNet.Identity.Owin.xml
+|   |   *.CodeDom.Providers.DotNetCompilerPlatform.dll
+|   |   *.CodeDom.Providers.DotNetCompilerPlatform.xml
+|   |   *.Owin.dll
+|   |   *.Owin.Host.SystemWeb.dll
+|   |   *.Owin.Host.SystemWeb.xml
+|   |   *.Owin.Security.Cookies.dll
+|   |   *.Owin.Security.Cookies.xml
+|   |   *.Owin.Security.dll
+|   |   *.Owin.Security.Facebook.dll
+|   |   *.Owin.Security.Facebook.xml
+|   |   *.Owin.Security.Google.dll
+|   |   *.Owin.Security.Google.xml
+|   |   *.Owin.Security.MicrosoftAccount.dll
+|   |   *.Owin.Security.MicrosoftAccount.xml
+|   |   *.Owin.Security.OAuth.dll
+|   |   *.Owin.Security.OAuth.xml
+|   |   *.Owin.Security.Twitter.dll
+|   |   *.Owin.Security.Twitter.xml
+|   |   *.Owin.Security.xml
+|   |   *.Owin.xml
+|   |   *.Web.Infrastructure.dll
+|   |   *.Json.dll
+|   |   *.Json.xml
+|   |   *.dll
+|   |   *.Web.Helpers.dll
+|   |   *.Web.Helpers.xml
+|   |   *.Web.Mvc.dll
+|   |   *.Web.Mvc.xml
+|   |   *.Web.Optimization.dll
+|   |   *.Web.Optimization.xml
+|   |   *.Web.Razor.dll
+|   |   *.Web.Razor.xml
+|   |   *.Web.WebPages.Deployment.dll
+|   |   *.Web.WebPages.Deployment.xml
+|   |   *.Web.WebPages.dll
+|   |   *.Web.WebPages.Razor.dll
+|   |   *.Web.WebPages.Razor.xml
+|   |   *.Web.WebPages.xml
+|   |   *.dll
+|   |   
+|   +---roslyn
+|   |       *.exe
+|   |       *.Build.Tasks.CodeAnalysis.dll
+|   |       *.CodeAnalysis.CSharp.dll
+|   |       *.CodeAnalysis.dll
+|   |       *.CodeAnalysis.VisualBasic.dll
+|   |       *.CSharp.Core.targets
+|   |       *.VisualBasic.Core.targets
+|   |       *.Collections.Immutable.dll
+|   |       *.Reflection.Metadata.dll
+|   |       *.exe
+|   |       *.exe
+|   |       *.exe.config
+|   |       
+|   \---ru
+|           *.resources.dll
+|           *.SqlServer.resources.dll
+|           *.AspNet.Identity.Core.resources.dll
+|           *.AspNet.Identity.EntityFramework.resources.dll
+|           *.AspNet.Identity.Owin.resources.dll
+|           *.Owin.Host.SystemWeb.resources.dll
+|           *.Owin.resources.dll
+|           *.Owin.Security.Facebook.resources.dll
+|           *.Owin.Security.Google.resources.dll
+|           *.Owin.Security.MicrosoftAccount.resources.dll
+|           *.Owin.Security.resources.dll
+|           *.Owin.Security.Twitter.resources.dll
+|           *.Web.Helpers.resources.dll
+|           *.Web.Mvc.resources.dll
+|           *.Web.Optimization.resources.dll
+|           *.Web.Razor.resources.dll
+|           *.Web.WebPages.Deployment.resources.dll
+|           *.Web.WebPages.Razor.resources.dll
+|           *.Web.WebPages.resources.dll
+|           
++---Content
+|       *.css
+|       *.min.css
+|       *.css
+|       
++---Controllers
+|       *.cs
+|       *.cs
+|       *.cs
+|       *.cs
+|       *.cs
+|       
++---fonts
+|       *.eot
+|       *.svg
+|       *.ttf
+|       *.woff
+|       
++---Images
+|   |   5*.jpg
+|   |   6*.jpg
+|   |   81*.jpg
+|   |   *.jpg
+|   |   *.png
+|   |   *.jpg
+|   |   *.jpg
+|   |   *.png
+|   |   *.png
+|   |   *.jpg
+|   |   *.jpg
+|   |   *.png
+|   |   *.jpg
+|   |   *.png
+|   |   *.jpg
+|   |   *.jpg
+|   |   *.jpg
+|   |   *.png
+|   |   *.png
+|   |   *.png
+|   |   *.jpg
+|   |   *.jpg
+|   |   *.jpg
+|   |   *.jpg
+|   |   *.png
+|   |   *.jpg
+|   |   *.jpg
+|   |   
+|   +---Cats
+|   |   +---Baden
+|   |   |       1.jpg
+|   |   |       10.jpg
+|   |   |       2.jpg
+|   |   |       3.jpg
+|   |   |       4.jpg
+|   |   |       5.jpg
+|   |   |       6.jpg
+|   |   |       7.jpg
+|   |   |       8.jpg
+|   |   |       9.jpg
+|   |   |       
+|   |   +---Katarsis
+|   |   |       5411071*.jpg
+|   |   |       5*.jpg
+|   |   |       *.jpg
+|   |   |       *.jpg
+|   |   |       
+|   |   +---Malpi
+|   |   |       1.jpg
+|   |   |       2.jpg
+|   |   |       
+|   |   +---Marusa
+|   |   |       1.jpg
+|   |   |       2.jpg
+|   |   |       3.jpg
+|   |   |       4.jpg
+|   |   |       5.jpg
+|   |   |       
+|   |   \---Palpi
+|   |           1.jpg
+|   |           2.jpg
+|   |           3.jpg
+|   |           
+|   +---Dogs
+|   |   +---Barash
+|   |   |       1.jpg
+|   |   |       2.jpg
+|   |   |       3.jpg
+|   |   |       4.jpg
+|   |   |       5.jpg
+|   |   |       6.jpg
+|   |   |       
+|   |   \---Mamba
+|   |           203669*.jpg
+|   |           538048*.jpg
+|   |           947*.jpg
+|   |           *.jpg
+|   |           *.jpg
+|   |           
+|   \---logos
+|           *.png
+|           *.png
+|           *.png
+|           *.png
+|           *.png
+|           *.png
+|           *.png
+|           *.png
+|           *.png
+|           *.png
+|           *.png
+|           *.png
+|           *.png
+|           
++---Models
+|       *.cs
+|       *.cs
+|       *.cs
+|       *.cs
+|       *.cs
+|       *.cs
+|       *.cs
+|       *.cs
+|       *.cs
+|       
++---obj
+|   \---Debug
+|       |   *.cache
+|       |   *.csproj.FileListAbsolute.txt
+|       |   *.csprojResolveAssemblyReference.cache
+|       |   *.dll
+|       |   *.pdb
+|       |   *.cs
+|       |   *.cs
+|       |   *.cs
+|       |   
+|       \---TempPE
++---Properties
+|       *.cs
+|       
++---Scripts
+|       *.js
+|       *.min.js
+|       *.10.2.intellisense.js
+|       *.10.2.js
+|       *.10.2.min.js
+|       *.10.2.min.map
+|       *.validate-vsdoc.js
+|       *.validate.js
+|       *.validate.min.js
+|       *.validate.unobtrusive.js
+|       *.validate.unobtrusive.min.js
+|       *.6.2.js
+|       *.js
+|       *.min.js
+|       *.js
+|       
+\---Views
+    |   *.config
+    |   *.cshtml
+    |   
+    +---Account
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       
+    +---Catalog
+    |       *.cshtml
+    |       *.cshtml
+    |       
+    +---Default
+    +---Home
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       
+    +---Manage
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       
+    +---News
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       *.cshtml
+    |       
+    \---Shared
+            *.cshtml
+            *.cshtml
+            *.cshtml
+            *.cshtml
+            

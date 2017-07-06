@@ -1,0 +1,126 @@
+﻿@model IEnumerable<homeless_pets.Models.Pet>
+
+@{
+    ViewBag.Title = "Каталог";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Каталог</h2>*@
+
+<div class="text">
+    <h2>Найдите своего лучшего друга!</h2>
+    <h3>@Model.Count() животных ищут свой дом.</h3>
+    <div class="tabbable">
+        <div class="row">
+            <div class="col-xs-12 col-md-5">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab">Все</a></li>
+                    <li><a href="#tab2" data-toggle="tab">Коты</a></li>
+                    <li><a href="#tab3" data-toggle="tab">Собаки</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <form asp-controller="Catalog" asp-action="List">
+                    @Html.DropDownList("MoveGender", null, new { onchange = "this.form.submit()",  @class = "btn btn-primary dropdown-toggle" })
+                </form>
+            </div>
+            <div>
+                <form asp-controller="Catalog" asp-action="List">
+                    <p class="col-xs-12 col-md-2">
+                        <input class="form-control" type="text" name="searchString">
+
+                    </p>
+                    <p class="col-xs-12 col-md-1">
+                        <input id="search" class="btn btn-info" type="submit" value="Поиск" />
+                    </p>
+                    <p class="col-xs-12 col-md-1 ">
+                        @Html.ActionLink("Сбросить", "List", null, new { @class = "btn btn-danger" })
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            @foreach (var item in Model)
+            {
+                string[] imgs;
+                try
+                {
+                    imgs = item.Img.Split(';');
+                    if (imgs.All(u => u == ""))
+                    {
+                        imgs = new string[] { @"/Images/Untitled.jpg" };
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    imgs = new string[] { @"/Images/Untitled.jpg" };
+                }
+                <div class="col-xs-6 col-sm-3">
+                    @Html.Raw("<a href=\"" + Url.Action("Card", "Catalog") + "/" + item.PetID + "\"><img style='width:120px; height:120px;' src=\"" + imgs.First() + "\" /> </a>")
+                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Age) , @Html.DisplayFor(modelItem => item.Type)</p>
+                </div>
+            }
+        </div>
+        <div class="tab-pane" id="tab2">
+            @foreach (var item in Model)
+            {
+                string[] imgs;
+                try
+                {
+                    imgs = item.Img.Split(';');
+                    if (imgs.All(u => u == ""))
+                    {
+                        imgs = new string[] { @"/Images/Untitled.jpg" };
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    imgs = new string[] { @"/Images/Untitled.jpg" };
+                }
+                if (item.Type == "Кот" || item.Type == "Кошка")
+                {
+                    <div class="col-sm-3 col-xs-4">
+                        @Html.Raw("<a href=\"" + Url.Action("Card", "Catalog") + "/" + item.PetID + "\"><img style='width:120px; height:120px;' src=\"" + imgs.First() + "\" /> </a>")
+                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                        <p>@Html.DisplayFor(modelItem => item.Age) , @Html.DisplayFor(modelItem => item.Type)</p>
+                    </div>
+                }
+            }
+        </div>
+        <div class="tab-pane" id="tab3">
+            @foreach (var item in Model)
+            {
+                string[] imgs;
+                try
+                {
+                    imgs = item.Img.Split(';');
+                    if (imgs.All(u => u == ""))
+                    {
+                        imgs = new string[] { @"/Images/Untitled.jpg" };
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    imgs = new string[] { @"/Images/Untitled.jpg" };
+                }
+                if (item.Type == "Сука" || item.Type == "Кобель")
+                {
+                    <div class="col-sm-3 col-xs-4">
+                        @Html.Raw("<a href=\"" + Url.Action("Card", "Catalog") + "/" + item.PetID + "\"><img style='width:120px; height:120px;' src=\"" + imgs.First() + "\" /> </a>")
+                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                        <p>@Html.DisplayFor(modelItem => item.Age) , @Html.DisplayFor(modelItem => item.Type)</p>
+                    </div>
+                }
+            }
+        </div>
+
+    </div>
+
+</div>

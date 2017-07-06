@@ -1,0 +1,115 @@
+﻿@model homeless_pets.Models.Pet
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="panel">
+    <div class="panel-heading">
+        @if (Model.Name == null)
+        {
+            <h3>Добавление нового животного</h3>
+        }
+        else
+        {
+            <h3>Редактирование &laquo;@Model.Name&raquo;</h3>
+        }
+    </div>
+
+    @using (Html.BeginForm("Edit", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.PetID)
+            @Html.HiddenFor(m => m.Img)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                switch (property.PropertyName)
+                {
+                    case "PetID":
+                    case "Img":
+                        // Ничего не делать
+                        break;
+                    default:
+                        <div class="form-group">
+                            <label>@(property.DisplayName ?? property.PropertyName)</label>
+                            @if (property.PropertyName == "CheckedOut")
+                            {
+
+                                @Html.TextArea(property.PropertyName, null,
+                                    new { @class = "form-control", rows = 5 })
+                            }
+                            else if (property.PropertyName == "Сastrated" || property.PropertyName == "WC")
+                            {
+                                @Html.CheckBox(name: property.PropertyName, htmlAttributes: new { @class = "form-control" })
+                            }
+                            else if (property.PropertyName == "Type")
+                            {
+                                List<SelectListItem> typeItems = new List<SelectListItem>();
+                                typeItems.Add(new SelectListItem() { Text = "Кот", Value = "Кот" });
+                                typeItems.Add(new SelectListItem() { Text = "Кошка", Value = "Кошка" });
+                                typeItems.Add(new SelectListItem() { Text = "Кобель", Value = "Кобель" });
+                                typeItems.Add(new SelectListItem() { Text = "Сука", Value = "Сука" });
+
+                                @Html.DropDownList(property.PropertyName, typeItems, htmlAttributes: new { @class = "form-control" })
+                            }
+                            else if (property.PropertyName == "Gender")
+                            {
+                                List<SelectListItem> genderItems = new List<SelectListItem>();
+                                genderItems.Add(new SelectListItem() { Text = "Мужской", Value = "false" });
+                                genderItems.Add(new SelectListItem() { Text = "Женский", Value = "true" });
+
+                                @Html.DropDownList(property.PropertyName, genderItems, htmlAttributes: new { @class = "form-control" })
+                            }
+                            else
+                            {
+                                @Html.TextBox(property.PropertyName, null,
+                                    new { @class = "form-control" })
+                            }
+                            @Html.ValidationMessage(property.PropertyName)
+                        </div>
+                        break;
+                }
+            }
+            <div class="form-group">
+                <div style="position:relative;">
+                    <label>Картинка</label>
+                    <a class='btn' href='javascript:;'>
+                        Выберите файл...
+                        <input type="file" min="1" max="15" multiple name="Images" id="ImagesID" size="40"
+                               style="position:absolute;z-index:2;top:0;
+                                left:0;filter: alpha(opacity=0); opacity:0;
+                                background-color:transparent;color:transparent;"
+                               onchange='$("#upload-file-info").html("Загружено нажмите  \"Сохранить\"");'>
+                    </a>
+                    <span class='label label-info' id="upload-file-info"></span>
+                </div>
+                @if (Model.Img == null || !Model.Img.Any())
+                {
+                    <div class="form-control-static">Нет картинки</div>
+                }
+                else
+                {
+                    string[] imgs = Model.Img.Split(';');
+                    <nav class="img-viewer">
+                        @foreach (var img in imgs)
+                        {
+                            if (img == "") { continue; }
+                            <img src="@img" class="album_imgs" alt="" title="" onclick="$(this).detach()">
+                        }
+                    </nav>
+
+                }
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Сохранить" class="btn btn-primary" onclick="var s = '';$('.album_imgs').each(function () {s = s + $(this).attr('src') + ';'; });
+    $('#Img').val(s);" />
+            @Html.ActionLink("Отменить изменения и вернуться к списку", "Info", null, new
+       {
+           @class = "btn btn-default"
+       })
+        </div>
+    }
+</div>
